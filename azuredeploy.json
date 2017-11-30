@@ -80,7 +80,7 @@
     "imageOffer": "Centos",
     "OSDiskName": "osdiskfordockersimple",
     "nicName": "myVMNicD",
-    "scriptUrl": "https://raw.githubusercontent.com/SolaceLabs/solace-azure-quickstart-template/genericurl/"
+    "scriptUrl": "https://raw.githubusercontent.com/rodgeve/solace-azure-quickstart-template/genericurl/"
     "sharedTemplatename": "shared-resources.json",
     "solaceInstallScriptName": "deploy_vmr.sh",
     "publicIPAddressName": "myPublicIPD",
