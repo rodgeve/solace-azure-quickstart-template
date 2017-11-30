@@ -20,6 +20,8 @@ while getopts "c:i:n:p:" opt; do
         ;;
     n)  number_of_instances=$OPTARG
         ;;
+    u)  REAL_LINK=$OPTARG
+        ;;
     p)  password=$OPTARG
         ;;        
     esac
@@ -38,14 +40,14 @@ yum -y install lvm2
 yum -y install epel-release
 yum -y install jq
 #Load the VMR
-REAL_LINK=
-for filename in ./*; do
-    echo "File = ${filename}"
-    count=`grep -c "https://products.solace.com" ${filename}`
-    if [ "1" = ${count} ]; then
-      REAL_LINK=`egrep -o "https://[a-zA-Z0-9\.\/\_\?\=]*" ${filename}`
-    fi    
-done
+#REAL_LINK=
+#for filename in ./*; do
+#    echo "File = ${filename}"
+#    count=`grep -c "https://products.solace.com" ${filename}`
+#    if [ "1" = ${count} ]; then
+#      REAL_LINK=`egrep -o "https://[a-zA-Z0-9\.\/\_\?\=]*" ${filename}`
+#    fi    
+#done
 
 echo "`date` INFO: check to make sure we have a complete load"
 wget -O /tmp/solosEval.info -nv  "${REAL_LINK}.md5"

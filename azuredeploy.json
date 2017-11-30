@@ -301,7 +301,7 @@
             "[concat(variables('scriptUrl'), 'scripts/', variables('solaceInstallScriptName'))]",
             "[concat(variables('scriptUrl'), 'scripts/semp_query.sh')]"
           ],
-          "commandToExecute": "[concat('bash ', variables('solaceInstallScriptName'), ' -c ', copyindex(), ' -i ', variables('nodeAddressPrefix'), ' -n ', variables('numberOfInstances'), ' -p ', parameters('adminPassword'))]"   
+          "commandToExecute": "[concat('bash ', variables('solaceInstallScriptName'), ' -u ', parameters('solaceVMR_URI'), ' -c ', copyindex(), ' -i ', variables('nodeAddressPrefix'), ' -n ', variables('numberOfInstances'), ' -p ', parameters('adminPassword'))]"   
         } 
       }
     }
