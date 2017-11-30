@@ -48,7 +48,7 @@ for filename in ./*; do
 done
 
 echo "`date` INFO: check to make sure we have a complete load"
-wget -O /tmp/solosEval.info -nv  https://products.solace.com/download/VMR_DOCKER_EVAL_MD5
+wget -O /tmp/solosEval.info -nv  "${REAL_LINK}.md5"
 IFS=' ' read -ra SOLOSEVAL_INFO <<< `cat /tmp/solosEval.info`
 MD5_SUM_EVAL=${SOLOSEVAL_INFO[0]}
 SolOS_EVAL_LOAD=${SOLOSEVAL_INFO[1]}
