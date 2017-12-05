@@ -56,16 +56,16 @@ MD5_SUM_EVAL=${SOLOSEVAL_INFO[0]}
 SolOS_EVAL_LOAD=${SOLOSEVAL_INFO[1]}
 echo "`date` INFO: Reference eval md5sum is: ${MD5_SUM_EVAL}"
 
-wget -O /tmp/solosComm.info -nv  https://products.solace.com/download/VMR_DOCKER_COMM_MD5
-IFS=' ' read -ra SOLOSCOMM_INFO <<< `cat /tmp/solosComm.info`
-MD5_SUM_COMM=${SOLOSCOMM_INFO[0]}
-SolOS_COMM_LOAD=${SOLOSCOMM_INFO[1]}
-echo "`date` INFO: Reference comm md5sum is: ${MD5_SUM_COMM}"
+#wget -O /tmp/solosComm.info -nv  https://products.solace.com/download/VMR_DOCKER_COMM_MD5
+#IFS=' ' read -ra SOLOSCOMM_INFO <<< `cat /tmp/solosComm.info`
+#MD5_SUM_COMM=${SOLOSCOMM_INFO[0]}
+#SolOS_COMM_LOAD=${SOLOSCOMM_INFO[1]}
+#echo "`date` INFO: Reference comm md5sum is: ${MD5_SUM_COMM}"
 
 echo "`date` INFO: try 3 times to download from URL provided and validate it is Evaluation and Community edition VRM"
 LOOP_COUNT=0
 SolOS_LOAD=solos.tar.gz
-isEval=0
+#isEval=0
 
 while [ $LOOP_COUNT -lt 3 ]; do
   wget -q -O /tmp/${SolOS_LOAD} -nv ${REAL_LINK}
@@ -73,10 +73,10 @@ while [ $LOOP_COUNT -lt 3 ]; do
   LOCAL_OS_INFO=`md5sum /tmp/${SolOS_LOAD}`
   IFS=' ' read -ra SOLOS_INFO <<< ${LOCAL_OS_INFO}
   LOCAL_MD5_SUM=${SOLOS_INFO[0]}
-  if [ ${LOCAL_MD5_SUM} == ${MD5_SUM_COMM} ]; then
-    echo "`date` INFO: Successfully downloaded ${SolOS_COMM_LOAD}"
-    break
-  fi
+#  if [ ${LOCAL_MD5_SUM} == ${MD5_SUM_COMM} ]; then
+#    echo "`date` INFO: Successfully downloaded ${SolOS_COMM_LOAD}"
+#    break
+#  fi
   if [ ${LOCAL_MD5_SUM} == ${MD5_SUM_EVAL} ]; then
     echo "`date` INFO: Successfully downloaded ${SolOS_EVAL_LOAD}"
     isEval=1
